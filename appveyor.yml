@@ -4,6 +4,8 @@ branches:
     - master
 skip_tags: true
 image: Ubuntu
+environment:
+  APPVEYOR_BUILD_VERSION: $(APPVEYOR_BUILD_VERSION)
 build_script:
   - sh: sh gradlew build
 after_build:
@@ -19,4 +21,3 @@ deploy:
     prerelease: false
     on:
       branch: master
-      APPVEYOR_REPO_TAG: true
