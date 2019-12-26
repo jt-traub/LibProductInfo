@@ -14,6 +14,7 @@ artifacts:
     name: LibProductInfo-$(APPVEYOR_BUILD_VERSION).jar
 deploy:
   - provider: GitHub
+    auth_token: 44388e7ec3b2d0ad2f4224dc18083f52c7b37100
     artifact: out/LibProductInfo-$(APPVEYOR_BUILD_VERSION).jar
     draft: false
     prerelease: false
