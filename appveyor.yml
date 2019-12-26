@@ -8,13 +8,13 @@ build_script:
   - sh: sh gradlew build
 after_build:
   - sh: mkdir out
-  - sh: cp build/libs/LibProductInfo-1.0-SNAPSHOT.jar out/LibProductInfo-{version}.jar
+  - sh: cp build/libs/LibProductInfo-1.0-SNAPSHOT.jar out/LibProductInfo-$(APPVEYOR_BUILD_VERSION).jar
 artifacts:
   - path: out
-    name: LibProductInfo-{version}.jar
+    name: LibProductInfo-$(APPVEYOR_BUILD_VERSION).jar
 deploy:
   - provider: GitHub
-    artifact: out/LibProductInfo-{version}.jar
+    artifact: out/LibProductInfo-$(APPVEYOR_BUILD_VERSION).jar
     draft: false
     prerelease: false
     on:
