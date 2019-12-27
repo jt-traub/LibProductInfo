@@ -9,6 +9,7 @@ build_script:
 after_build:
   - sh: mkdir out
   - sh: cp build/libs/LibProductInfo-1.0-SNAPSHOT.jar out/LibProductInfo-$APPVEYOR_BUILD_VERSION.jar
+  - sh: chmod a+r out/LibProductInfo-$APPVEYOR_BUILD_VERSION.jar
 artifacts:
   - path: out
     name: LibProductInfo-$(APPVEYOR_BUILD_VERSION).jar

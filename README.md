@@ -17,7 +17,7 @@ This library contains a driver app/main program in order to allow
 demonstration of it's functionality.
 
 To use run:
-```jar LibProductInfo-<version>.jar <filename>```
+```java -jar LibProductInfo-<version>.jar <filename>```
 
 If no filename is provided, the driver will prompt for a file to
 use for input and will process that given file.
