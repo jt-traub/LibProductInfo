@@ -2,6 +2,7 @@
 
 #### Build status
 [![Build status](https://ci.appveyor.com/api/projects/status/yi9vojl7q4d8bobn?svg=true)](https://ci.appveyor.com/project/jt-traub/libproductinfo)
+[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 
 #### Overview
 This library parses a flat-file fixed column input and produces a

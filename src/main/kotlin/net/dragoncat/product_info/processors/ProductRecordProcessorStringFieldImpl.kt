@@ -1,7 +1,14 @@
 package net.dragoncat.product_info.processors
 
 import net.dragoncat.product_info.ProductRecordProcessor
-import net.dragoncat.product_info.datamodel.*
+import net.dragoncat.product_info.datamodel.Currency
+import net.dragoncat.product_info.datamodel.PriceData
+import net.dragoncat.product_info.datamodel.ProductFlags
+import net.dragoncat.product_info.datamodel.ProductRecord
+import net.dragoncat.product_info.datamodel.ProductRecordImpl
+import net.dragoncat.product_info.datamodel.SinglePrice
+import net.dragoncat.product_info.datamodel.SplitPrice
+import net.dragoncat.product_info.datamodel.USMoney
 import java.io.InputStream
 
 /**
