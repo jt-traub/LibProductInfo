@@ -1,7 +1,7 @@
 package net.dragoncat.product_info.datamodel
 
-import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import org.junit.jupiter.api.Test
 
 class SplitPriceTest {
     @Test

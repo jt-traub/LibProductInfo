@@ -1,13 +1,13 @@
 package net.dragoncat.product_info.processors
 
-import net.dragoncat.product_info.datamodel.Flags
-import net.dragoncat.product_info.processors.ProductRecordProcessorStringFieldImpl.Fields
-import org.junit.jupiter.api.Test
 import java.io.ByteArrayInputStream
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import net.dragoncat.product_info.datamodel.Flags
+import net.dragoncat.product_info.processors.ProductRecordProcessorStringFieldImpl.Fields
+import org.junit.jupiter.api.Test
 
 class ProductRecordProcessorStringFieldImplTest {
     @Test

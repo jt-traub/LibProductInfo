@@ -1,8 +1,8 @@
 package net.dragoncat.product_info.datamodel
 
-import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import org.junit.jupiter.api.Test
 
 class ProductRecordImplTest {
     @Test

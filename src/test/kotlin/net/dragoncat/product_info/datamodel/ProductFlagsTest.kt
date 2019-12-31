@@ -1,9 +1,9 @@
 package net.dragoncat.product_info.datamodel
 
-import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import org.junit.jupiter.api.Test
 
 class ProductFlagsTest {
     @Test

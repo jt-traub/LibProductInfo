@@ -1,7 +1,7 @@
 package net.dragoncat.product_info
 
-import net.dragoncat.product_info.datamodel.ProductRecord
 import java.io.InputStream
+import net.dragoncat.product_info.datamodel.ProductRecord
 
 /**
  * Define the interface that all external callers of the library will see.

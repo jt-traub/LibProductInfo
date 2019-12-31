@@ -1,7 +1,7 @@
 package net.dragoncat.product_info.driver
 
-import net.dragoncat.product_info.processors.ProductRecordProcessorStringFieldImpl
 import java.io.File
+import net.dragoncat.product_info.processors.ProductRecordProcessorStringFieldImpl
 
 /**
  * Simple driver application to demonstrate the library and it's file-stream

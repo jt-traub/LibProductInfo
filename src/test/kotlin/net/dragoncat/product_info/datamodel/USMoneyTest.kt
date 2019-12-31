@@ -1,8 +1,8 @@
 package net.dragoncat.product_info.datamodel
 
-import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 import kotlin.test.assertEquals
+import org.junit.jupiter.api.Test
 
 class USMoneyTest {
     @Test
