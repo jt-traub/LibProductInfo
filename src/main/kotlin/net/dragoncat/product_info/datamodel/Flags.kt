@@ -1,8 +1,8 @@
 package net.dragoncat.product_info.datamodel
 
 /**
- * Enumeration of all existant flag positions.  Only flag 3 (PER_WEIGHT) and 5 (TAXABLE) have
- * defined meaning at this itme.
+ * Enumeration of all existent flag positions.  Only flag 3 (PER_WEIGHT) and 5 (TAXABLE) have
+ * defined meaning at this time.
  */
 enum class Flags {
     // While we only care (today) about flags 3 (WEIGHT) and 5 (TAX) I want to preserve all

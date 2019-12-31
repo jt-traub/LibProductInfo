@@ -1,6 +1,12 @@
 package net.dragoncat.product_info.driver
 
-// Solely exists to act as a driver for the rest of the library
+import net.dragoncat.product_info.processors.ProductRecordProcessorStringFieldImpl
+import java.io.File
+
+/**
+ * Simple driver application to demonstrate the library and it's file-stream
+ * implementation
+ */
 class LibDriver {
     private fun promptInput(s: String): String? {
         print(s)
@@ -18,7 +24,13 @@ class LibDriver {
 
         inputFile?.run {
             if (this.isNotEmpty()) {
-                // Do the processing
+                try {
+                    File(this).inputStream().apply {
+                        ProductRecordProcessorStringFieldImpl().process(this).forEach { println(it) }
+                    }.close()
+                } catch (e: Exception) {
+                    usage(e.message ?: e.toString())
+                }
             } else null
         } ?: usage("Must provide an input file to operate on.")
     }

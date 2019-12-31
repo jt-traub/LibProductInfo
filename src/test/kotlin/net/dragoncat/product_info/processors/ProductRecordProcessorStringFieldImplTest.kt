@@ -1,70 +1,67 @@
-package net.dragoncat.product_info
+package net.dragoncat.product_info.processors
 
 import net.dragoncat.product_info.datamodel.Flags
+import net.dragoncat.product_info.processors.ProductRecordProcessorStringFieldImpl.Fields
 import org.junit.jupiter.api.Test
+import java.io.ByteArrayInputStream
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class ProductRecordProcessorTest {
+class ProductRecordImplProcessorStringFieldImplTest {
     @Test
     fun `test parse string`() {
-        val p = ProductRecordProcessor()
-        val resDesc = p.parseString(singleItemTest, ProductRecordProcessor.Fields.ProductDescription)
-        val resSize = p.parseString(singleItemTest, ProductRecordProcessor.Fields.ProductSize)
+        val p = ProductRecordProcessorStringFieldImpl()
+        val resDesc = p.parseString(singleItemTest, Fields.ProductDescription)
+        val resSize = p.parseString(singleItemTest, Fields.ProductSize)
         assertEquals("Generic Soda 12-pack", resDesc)
         assertEquals("12x12oz", resSize)
     }
 
     @Test
     fun `test parse long`() {
-        val p = ProductRecordProcessor()
-        val res = p.parseLong(singleItemTest, ProductRecordProcessor.Fields.ProductId)
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.parseLong(singleItemTest, Fields.ProductId)
         assertEquals(14963801, res)
     }
 
     @Test
     fun `parse currency`() {
-        val p = ProductRecordProcessor()
-        val res = p.parseCurrency(singleItemTest, ProductRecordProcessor.Fields.RegularSplitPrice)
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.parseCurrency(singleItemTest, Fields.RegularSplitPrice)
         assertEquals(13.00, res?.toDouble())
     }
 
     @Test
     fun `test parse negative currency value`() {
-        val p = ProductRecordProcessor()
-        val res = p.parseCurrency(negativeCurrencyTest, ProductRecordProcessor.Fields.PromotionalSingularPrice)
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.parseCurrency(negativeCurrencyTest, Fields.PromotionalSingularPrice)
         assertEquals(-5.49, res?.toDouble())
     }
 
 
     @Test
     fun `parse price data`() {
-        val p = ProductRecordProcessor()
-        val res = p.parsePriceData(
-            singleItemTest,
-            ProductRecordProcessor.Fields.RegularForX,
-            ProductRecordProcessor.Fields.RegularSingularPrice,
-            ProductRecordProcessor.Fields.RegularSplitPrice
-        )
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.parsePriceData(singleItemTest, Fields.RegularForX, Fields.RegularSingularPrice, Fields.RegularSplitPrice)
         assertEquals("2 for $13.00", res?.display())
         assertEquals(6.50, res?.calculatorValue())
     }
 
     @Test
     fun `parse flags`() {
-        val p = ProductRecordProcessor()
-        val res = p.parseFlags(singleItemTest, ProductRecordProcessor.Fields.Flags)
-        assertTrue(res.isSet(Flags.TAXABLE))
-        assertFalse(res.isSet(Flags.PER_WEIGHT))
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.parseFlags(singleItemTest, Fields.Flags)
+        assertTrue(res?.isSet(Flags.TAXABLE) ?: false)
+        assertFalse(res?.isSet(Flags.PER_WEIGHT) ?: false)
     }
 
     @Test
     fun `parse single record`() {
-        val i = listOf(singleItemTest).stream()
-        val p = ProductRecordProcessor()
-        val res = p.getProductRecords(i)
+        val i = ByteArrayInputStream(singleItemTest.toByteArray())
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.process(i)
         assertEquals(1, res.size)
         assertEquals(14963801, res[0].productId)
         assertEquals("Generic Soda 12-pack", res[0].productDescription)
@@ -79,9 +76,9 @@ class ProductRecordProcessorTest {
 
     @Test
     fun `parse multiple records`() {
-        val i = multipleProducts.stream()
-        val p = ProductRecordProcessor()
-        val res = p.getProductRecords(i)
+        val i = ByteArrayInputStream(multipleProducts.joinToString("\n").toByteArray())
+        val p = ProductRecordProcessorStringFieldImpl()
+        val res = p.process(i)
         assertEquals(4, res.size)
         // verify each of the items in the results
         assertEquals(80000001, res[0].productId)
@@ -112,7 +109,7 @@ class ProductRecordProcessorTest {
         assertEquals(5.49, res[2].promotionalPriceCalculator)
         assertEquals("Each", res[2].unitOfMeasure)
         assertNull(res[2].taxRate)
-        assertEquals("", res[2].productSize)
+        assertNull(res[2].productSize)
 
         assertEquals(50133333, res[3].productId)
         assertEquals("Fuji Apples (Organic)", res[3].productDescription)
@@ -126,9 +123,9 @@ class ProductRecordProcessorTest {
     }
 
     companion object {
-        val singleItemTest =
+        const val singleItemTest =
             "14963801 Generic Soda 12-pack                                        00000000 00000549 00001300 00000000 00000002 00000000 NNNNYNNNN   12x12oz"
-        val negativeCurrencyTest =
+        const val negativeCurrencyTest =
             "14963801 Generic Soda 12-pack                                        00000000 -0000549 00001300 00000000 00000002 00000000 NNNNYNNNN   12x12oz"
         val multipleProducts = listOf(
             "80000001 Kimchi-flavored white rice                                  00000567 00000000 00000000 00000000 00000000 00000000 NNNNNNNNN      18oz",

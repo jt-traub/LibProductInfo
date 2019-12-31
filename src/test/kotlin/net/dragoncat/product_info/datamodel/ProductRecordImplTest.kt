@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
-class ProductRecordTest {
+class ProductRecordImplTest {
     @Test
     fun `test default constructor`() {
-        val p = ProductRecord()
+        val p = ProductRecordImpl()
         assertNull(p.productId)
         assertNull(p.productDescription)
         assertNull(p.regularPrice)
@@ -24,11 +24,11 @@ class ProductRecordTest {
 
     @Test
     fun `test full data`() {
-        val p = ProductRecord(
+        val p = ProductRecordImpl(
             productId = 1,
             productDescription = "Test product 1",
-            promoPrice = PriceData(Currency(100)),
-            regularPrice = PriceData(Currency(250), 2),
+            promoPrice = SinglePrice(Currency(100)),
+            regularPrice = SplitPrice(Currency(250), 2),
             productFlags = ProductFlags(mutableSetOf(Flags.PER_WEIGHT, Flags.TAXABLE)),
             productSize = "Test size"
         )

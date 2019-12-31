@@ -1,15 +1,31 @@
 package net.dragoncat.product_info.datamodel
 
 import java.math.BigDecimal
-import java.math.RoundingMode
 
-data class Currency(val centisimalValue: Long) {
-    private val cost: BigDecimal = BigDecimal.valueOf(centisimalValue, 2)
+/**
+ * Encapsulate a currency value by extending big decimal with set precision.
+ */
+data class Currency(private val cents: Long): BigDecimal(cents.toBigInteger(), 2) {
+    /**
+     * Display a currency with the currency symbol
+     */
+    override fun toString() = "$" + super.toString()
 
-    operator fun div(divisor: Long) =
-        cost.setScale(4).divide(divisor.toBigDecimal(), RoundingMode.HALF_DOWN).toDouble()
+    /**
+     * Returns the value of this number as a [Byte], which may involve rounding or truncation.
+     * Required to extend [BigDecimal]
+     */
+    override fun toByte() = cents.toByte()
 
-    fun toLong() = centisimalValue
-    fun toDouble() = cost.toDouble()
-    override fun toString() = "$$cost"
+    /**
+     * Returns the [Char] with the numeric value equal to this number, truncated to 16 bits if appropriate.
+     * Required to extend [BigDecimal]
+     */
+    override fun toChar() = cents.toChar()
+
+    /**
+     * Returns the value of this number as a [Short], which may involve rounding or truncation.
+     * Required to extend [BigDecimal]
+     */
+    override fun toShort() = cents.toShort()
 }
