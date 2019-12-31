@@ -39,4 +39,13 @@ test {
 dokka {
     outputFormat = 'gfm'
     outputDirectory = 'docs'
+
+    configuration {
+        moduleName = '.'
+        sourceLink {
+            path = "src/main/kotlin"
+            url = "https://github.com/jt-traub/LibProductInfo/blob/master/src/main/kotlin"
+            lineSuffix = "#L"
+        }
+    }
 }

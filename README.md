@@ -26,7 +26,7 @@ After converting the file, the driver will output the list of
 records in textual form to the console.
 
 #### Documentation
-KDoc documentation for the library is [here](https://jt-traub.github.io/LibProductInfo/-lib-product-info/)
+KDoc documentation for the library is [here](https://jt-traub.github.io/LibProductInfo/)
 
 #### License & Copyright
 This code is copyright (c) 2019-2020 Joseph L Traub

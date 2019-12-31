@@ -1,12 +1,10 @@
 package net.dragoncat.product_info.datamodel
 
 /**
- * Enumeration of all existent flag positions.  Only flag 3 (PER_WEIGHT) and 5 (TAXABLE) have
+ * Enumeration of all existent flag positions.  Only flag 3 [PER_WEIGHT] and 5 [TAXABLE] have
  * defined meaning at this time.
  */
 enum class Flags {
-    // While we only care (today) about flags 3 (WEIGHT) and 5 (TAX) I want to preserve all
-    // values from the input into the set just in case we care about more in the future
     UNKNOWN1,
     UNKNOWN2,
     /** Item is cost per pound rather than per item */
