@@ -9,19 +9,19 @@ data class ProductFlags(
 ) {
     companion object {
         /**
-         * Construct a new ProductFlags object from [inp] setting flags based on 'Y' or 'N' in the string, with
+         * Construct a new ProductFlags object from the input setting flags based on 'Y' or 'N' in the string, with
          * flag [Flags.UNKNOWN1] being the first character in the string
          */
         fun parse(inp: String) = ProductFlags(Flags.values().filter { inp.getOrElse(it.ordinal) { 'N' } == 'Y' }.toSet())
 
         /**
-         * Construct a new ProductFlags from [fl] which represents the set of flags as a bitfield encoded [Long]
+         * Construct a new ProductFlags from a bitfield encoded [Long]
          */
         fun fromLong(fl: Long) =ProductFlags(Flags.values().filter { fl and (1L shl it.ordinal) != 0L }.toSet())
     }
 
     /**
-     * Check if the flag [f] is set
+     * Check if the flag is set
      */
     fun isSet(f: Flags) = flags.contains(f)
 

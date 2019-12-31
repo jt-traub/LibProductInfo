@@ -1,0 +1,7 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+
+net.dragoncat.product_info
+net.dragoncat.product_info.datamodel
+net.dragoncat.product_info.driver
+net.dragoncat.product_info.processors
