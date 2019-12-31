@@ -10,12 +10,12 @@ data class ProductRecordImpl(
     var promoPrice: PriceData? = null,
     var productFlags: ProductFlags? = null,
     override var productSize: String? = null
-): ProductRecord {
+) : ProductRecord {
     override val regularPriceDisplay get() = regularPrice?.display() ?: "$0.00"
     override val regularPriceCalculator get() = regularPrice?.calculatorValue() ?: 0.0
     override val promotionalPriceDisplay get() = promoPrice?.display()
     override val promotionalPriceCalculator get() = promoPrice?.calculatorValue()
-    override val unitOfMeasure get() = if(productFlags?.isSet(Flags.PER_WEIGHT) == true) "Pound" else "Each"
+    override val unitOfMeasure get() = if (productFlags?.isSet(Flags.PER_WEIGHT) == true) "Pound" else "Each"
     override val taxRate get() = if (productFlags?.isSet(Flags.TAXABLE) == true) .07775 else null
 
     override fun toString() =

@@ -6,13 +6,13 @@ import kotlin.test.assertEquals
 class SinglePriceTest {
     @Test
     fun `display value`() {
-        val p = SinglePrice(Currency(100))
+        val p = SinglePrice(USMoney(100))
         assertEquals("$1.00", p.display())
     }
 
     @Test
     fun `calculator value`() {
-        val p = SinglePrice(Currency(100))
+        val p = SinglePrice(USMoney(100))
         assertEquals(1.00, p.calculatorValue())
     }
 }

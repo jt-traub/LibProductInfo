@@ -8,7 +8,7 @@ import java.io.InputStream
  * Implementation of a ProductRecordProcessor that parses the stream into
  * lines and then parses each line based on positional fields.
  */
-class ProductRecordProcessorStringFieldImpl: ProductRecordProcessor {
+class ProductRecordProcessorStringFieldImpl : ProductRecordProcessor {
 
     /**
      * Internal enum defining each fields position within the string format
@@ -33,7 +33,7 @@ class ProductRecordProcessorStringFieldImpl: ProductRecordProcessor {
      * internal function for parsing a [String] out of a field-string.
      * internally visible for testing, otherwise it would be private
      */
-    internal fun parseString(s: String, f: Fields) = s.substring(f.begin, f.end+1).trim().ifEmpty { null }
+    internal fun parseString(s: String, f: Fields) = s.substring(f.begin, f.end + 1).trim().ifEmpty { null }
 
     /**
      * internal function for parsing a [Long] out of a field-string.
@@ -42,11 +42,11 @@ class ProductRecordProcessorStringFieldImpl: ProductRecordProcessor {
     internal fun parseLong(s: String, f: Fields) = parseString(s, f)?.toLong()
 
     /**
-     * internal function for parsing a [Currency] out of a field-string.
+     * internal function for parsing a [Currency] (implemented as [USMoney]) out of a field-string.
      * internally visible for testing, otherwise it would be private
      */
-    internal fun parseCurrency(s: String, f: Fields) =
-        parseLong(s, f)?.let { if (it == 0L) null else Currency(it) }
+    internal fun parseCurrency(s: String, f: Fields): Currency? =
+        parseLong(s, f)?.let { if (it == 0L) null else USMoney(it) }
 
     /**
      * internal function for parsing a [PriceData] out of a set of field-strings.

@@ -1,4 +1,4 @@
-[.](../../index.md) / [net.dragoncat.product_info.datamodel](../index.md) / [Currency](index.md) / [toChar](./to-char.md)
+[.](../../index.md) / [net.dragoncat.product_info.datamodel](../index.md) / [USMoney](index.md) / [toChar](./to-char.md)
 
 # toChar
 

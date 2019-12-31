@@ -9,7 +9,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class ProductRecordImplProcessorStringFieldImplTest {
+class ProductRecordProcessorStringFieldImplTest {
     @Test
     fun `test parse string`() {
         val p = ProductRecordProcessorStringFieldImpl()
@@ -39,7 +39,6 @@ class ProductRecordImplProcessorStringFieldImplTest {
         val res = p.parseCurrency(negativeCurrencyTest, Fields.PromotionalSingularPrice)
         assertEquals(-5.49, res?.toDouble())
     }
-
 
     @Test
     fun `parse price data`() {

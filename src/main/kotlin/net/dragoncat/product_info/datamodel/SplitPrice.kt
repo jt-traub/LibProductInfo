@@ -11,11 +11,11 @@ data class SplitPrice(
     override val cost: Currency,
     /** Number of items in group */
     val forX: Long
-): PriceData {
+) : PriceData {
     /** Override for printable string */
     override fun toString() = "$forX for $cost"
     /** Double value is computed via [BigDecimal] and with 4 decimals and rounded half-down as per spec */
-    override fun calculatorValue() = cost.divide(forX.toBigDecimal(), 4, RoundingMode.HALF_DOWN).toDouble()
+    override fun calculatorValue() = cost.toBigDecimal().divide(forX.toBigDecimal(), 4, RoundingMode.HALF_DOWN).toDouble()
     /** String for display is same as printable string */
     override fun display() = toString()
 }

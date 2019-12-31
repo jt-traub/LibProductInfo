@@ -27,8 +27,8 @@ class ProductRecordImplTest {
         val p = ProductRecordImpl(
             productId = 1,
             productDescription = "Test product 1",
-            promoPrice = SinglePrice(Currency(100)),
-            regularPrice = SplitPrice(Currency(250), 2),
+            promoPrice = SinglePrice(USMoney(100)),
+            regularPrice = SplitPrice(USMoney(250), 2),
             productFlags = ProductFlags(mutableSetOf(Flags.PER_WEIGHT, Flags.TAXABLE)),
             productSize = "Test size"
         )

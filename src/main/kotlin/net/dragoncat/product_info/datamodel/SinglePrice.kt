@@ -6,11 +6,11 @@ package net.dragoncat.product_info.datamodel
 data class SinglePrice(
     /** Underlying cost as a [Currency] value */
     override val cost: Currency
-): PriceData {
+) : PriceData {
     /** Overload string display to underlying value */
     override fun toString() = cost.toString()
     /** calculator value is just the underlying price */
-    override fun calculatorValue() = cost.toDouble()
+    override fun calculatorValue() = cost.toBigDecimal().toDouble()
     /** display is just the underlying value as a string */
     override fun display() = toString()
 }

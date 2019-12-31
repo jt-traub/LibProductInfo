@@ -8,7 +8,7 @@
 
 ##### [net.dragoncat.product_info.datamodel.Currency](../net.dragoncat.product_info.datamodel/-currency/index.md)
 
-Encapsulate a currency value by extending big decimal with set precision.
+Encapsulate a currency value type
 
 
 |
@@ -83,5 +83,12 @@ Implementation of a single price for 1 item
 ##### [net.dragoncat.product_info.datamodel.SplitPrice](../net.dragoncat.product_info.datamodel/-split-price/index.md)
 
 Pricing for a set of the same item (ie, 3 for $4.00)
+
+
+|
+
+##### [net.dragoncat.product_info.datamodel.USMoney](../net.dragoncat.product_info.datamodel/-u-s-money/index.md)
+
+Implement a US $ monetary type that sits on top of BigDecimal and implements the currency interface
 
 

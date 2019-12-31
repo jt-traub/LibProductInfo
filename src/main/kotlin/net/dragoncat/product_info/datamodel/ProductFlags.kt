@@ -17,7 +17,7 @@ data class ProductFlags(
         /**
          * Construct a new ProductFlags from a bitfield encoded [Long]
          */
-        fun fromLong(fl: Long) =ProductFlags(Flags.values().filter { fl and (1L shl it.ordinal) != 0L }.toSet())
+        fun fromLong(fl: Long) = ProductFlags(Flags.values().filter { fl and (1L shl it.ordinal) != 0L }.toSet())
     }
 
     /**
